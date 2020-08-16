@@ -1,0 +1,26 @@
+FROM ubuntu:latest
+
+# we want 4 different users with different user-specific configuration files
+RUN useradd -ms /bin/bash userA \
+  && useradd -ms /bin/bash userB \
+  && useradd -ms /bin/bash userC \
+  && useradd -ms /bin/bash userD
+
+
+# prepare the system-wide config files
+RUN echo 'echo "Source /etc/profile"' >> /etc/profile \ 
+  && echo 'echo "Source /etc/profile.d/test.sh"' >> /etc/profile.d/test.sh \
+  && echo 'echo "Source /etc/bashrc"' >> /etc/bashrc \
+  && echo 'echo "Source /etc/bash.bashrc"' >> /etc/bash.bashrc
+
+# Prepare the user-specific config files
+RUN echo 'echo "Source /home/userA/.bashrc"' >> /home/userA/.bashrc \
+  && echo 'echo "Source /home/userB/.bashrc"' >> /home/userB/.bashrc \
+  && echo 'echo "Source /home/userC/.bashrc"' >> /home/userC/.bashrc \
+  && echo 'echo "Source /home/userD/.bashrc"' >> /home/userD/.bashrc \
+  && echo 'echo "Source /home/userA/.bash_profile"' >> /home/userA/.bash_profile \
+  && echo 'echo "Source /home/userB/.bash_login"' >> /home/userB/.bash_login \
+  && echo 'echo "Source /home/userC/.profile"' >> /home/userC/.profile \
+  && echo 'echo "Source /home/userD/.bash_profile"' >> /home/userD/.bash_profile \
+  && echo 'echo "Source /home/userD/.bash_login"' >> /home/userD/.bash_login \
+  && echo 'echo "Source /home/userD/.profile"' >> /home/userD/.profile \
