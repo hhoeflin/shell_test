@@ -23,4 +23,7 @@ RUN echo 'echo "Source /home/userA/.bashrc"' > /home/userA/.bashrc \
   && echo 'echo "Source /home/userC/.profile"' > /home/userC/.profile \
   && echo 'echo "Source /home/userD/.bash_profile"' > /home/userD/.bash_profile \
   && echo 'echo "Source /home/userD/.bash_login"' > /home/userD/.bash_login \
-  && echo 'echo "Source /home/userD/.profile"' > /home/userD/.profile \
+  && echo 'echo "Source /home/userD/.profile"' > /home/userD/.profile 
+
+# a script for executing
+RUN echo 'echo $HOME' > /home/userA/script.sh
